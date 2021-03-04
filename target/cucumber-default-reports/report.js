@@ -1,169 +1,176 @@
-$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("file:src/test/resources/features/searchEmployee.feature");
+$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("file:src/test/resources/features/apiWorkflow.feature");
 formatter.feature({
-  "name": "Search Employee Functionality",
-  "description": "",
-  "keyword": "Feature"
-});
-formatter.scenarioOutline({
-  "name": "",
-  "description": "",
-  "keyword": "Scenario Outline",
+  "name": "Syntax HRMS API Workflow",
+  "description": "  Description: This feature file tests Syntax HRMS API Workflow",
+  "keyword": "Feature",
   "tags": [
     {
-      "name": "@searchname"
+      "name": "@apiWorkflow"
+    }
+  ]
+});
+formatter.background({
+  "name": "",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "a JWT is generated",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "com.hrms.API.generateTokenSteps.a_JWT_is_generated()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Creating an Employee",
+  "description": "",
+  "keyword": "Scenario",
+  "tags": [
+    {
+      "name": "@apiWorkflow"
     }
   ]
 });
 formatter.step({
-  "name": "enter \"\u003cEmployeeName\u003e\" in Employee Name textbox",
-  "keyword": "Then "
+  "name": "a request is prepared to create an employee",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "com.hrms.API.ApiTestingFinalSteps.a_request_is_prepared_to_create_an_employee()"
+});
+formatter.result({
+  "status": "passed"
 });
 formatter.step({
-  "name": "click on search button",
+  "name": "a POST call is made to create an Employee",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "com.hrms.API.ApiTestingFinalSteps.a_POST_call_is_made_to_create_an_Employee()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the status code for creating an employee is 201",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "com.hrms.API.ApiTestingFinalSteps.the_status_code_for_creating_an_employee_is(int)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the employee is created contains key \"Message\" and value \"Entry Created\"",
   "keyword": "And "
 });
-formatter.step({
-  "name": "verify that employees with \"\u003cEmployeeName\u003e\" is displayed",
-  "keyword": "Then "
+formatter.match({
+  "location": "com.hrms.API.ApiTestingFinalSteps.the_employee_is_created_contains_key_and_value(java.lang.String,java.lang.String)"
 });
-formatter.examples({
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the employeeID \"Employee[0].employee_id\" is stored in the global variable to be used for other calls",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "com.hrms.API.ApiTestingFinalSteps.the_employeeID_is_stored_in_the_global_variable_to_be_used_for_other_calls(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.background({
   "name": "",
   "description": "",
-  "keyword": "Examples",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "a JWT is generated",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "com.hrms.API.generateTokenSteps.a_JWT_is_generated()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Retrieving the created employee",
+  "description": "",
+  "keyword": "Scenario",
+  "tags": [
+    {
+      "name": "@apiWorkflow"
+    }
+  ]
+});
+formatter.step({
+  "name": "a request is prepared to retrieve the created employee",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "com.hrms.API.ApiTestingFinalSteps.a_request_is_prepared_to_retrieve_the_created_employee()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "a GET call is made to retrieve the created Employee",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "com.hrms.API.ApiTestingFinalSteps.a_GET_call_is_made_to_retrieve_the_created_Employee()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the status code for retrieving the created employee is 200",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "com.hrms.API.ApiTestingFinalSteps.the_status_code_for_retrieving_the_created_employee_is(int)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the retrieved EmployeeID \"employee[0].employee_id\" matches the globally stored EmployeeID",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "com.hrms.API.ApiTestingFinalSteps.the_retrieved_EmployeeID_matches_the_globally_stored_EmployeeID(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the retrieved data matches the data used to create the employee",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "com.hrms.API.ApiTestingFinalSteps.the_retrieved_data_matches_the_data_used_to_create_the_employee()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the retrieved data at \"employee\" matches the data used to create the employee with employee ID \"employee[0].employee_id\"",
   "rows": [
-    {
-      "cells": [
-        "EmployeeName"
-      ]
-    },
-    {
-      "cells": [
-        "Daria Denchuk"
-      ]
-    },
-    {
-      "cells": [
-        "Julia Garilova"
-      ]
-    },
-    {
-      "cells": [
-        "Valentina Black"
-      ]
-    },
-    {
-      "cells": [
-        "Chandler Muriel Bing"
-      ]
-    },
-    {
-      "cells": [
-        "Jaco Alval"
-      ]
-    }
-  ]
-});
-formatter.background({
-  "name": "",
-  "description": "",
-  "keyword": "Background"
-});
-formatter.before({
-  "status": "passed"
-});
-formatter.step({
-  "name": "enter valid credentials",
-  "keyword": "Given "
-});
-formatter.match({
-  "location": "com.hrms.stepdefinitions.LoginStepDefinition.enter_valid_credentials()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "click on login button",
+    {},
+    {}
+  ],
   "keyword": "And "
 });
 formatter.match({
-  "location": "com.hrms.stepdefinitions.LoginStepDefinition.click_on_login_button()"
+  "location": "com.hrms.API.ApiTestingFinalSteps.the_retrieved_data_at_matches_the_data_used_to_create_the_employee_with_employee_ID(java.lang.String,java.lang.String,io.cucumber.datatable.DataTable)"
 });
 formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "verify dashboard is displayed",
-  "keyword": "Then "
-});
-formatter.match({
-  "location": "com.hrms.stepdefinitions.LoginStepDefinition.verify_dashboard_is_displayed()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "click on PIM",
-  "keyword": "When "
-});
-formatter.match({
-  "location": "com.hrms.stepdefinitions.AddEmployeeStepDefinition.click_on_PIM()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "click on Employee List",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "com.hrms.stepdefinitions.EmployeeListStepDefinition.click_on_Employee_List()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.scenario({
-  "name": "",
-  "description": "",
-  "keyword": "Scenario Outline",
-  "tags": [
-    {
-      "name": "@searchname"
-    }
-  ]
-});
-formatter.step({
-  "name": "enter \"Daria Denchuk\" in Employee Name textbox",
-  "keyword": "Then "
-});
-formatter.match({
-  "location": "com.hrms.stepdefinitions.EmployeeListStepDefinition.enter_in_Employee_Name_textbox(java.lang.String)"
-});
-formatter.result({
-  "error_message": "org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {\"method\":\"css selector\",\"selector\":\".empsearch_employee_name_empName\"}\n  (Session info: chrome\u003d88.0.4324.96)\nFor documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html\nBuild info: version: \u00273.141.59\u0027, revision: \u0027e82be7d358\u0027, time: \u00272018-11-14T08:17:03\u0027\nSystem info: host: \u0027Anastasiias-MBP.home\u0027, ip: \u0027fe80:0:0:0:450:709b:e34c:8f15%en0\u0027, os.name: \u0027Mac OS X\u0027, os.arch: \u0027x86_64\u0027, os.version: \u002710.16\u0027, java.version: \u00271.8.0_261\u0027\nDriver info: org.openqa.selenium.chrome.ChromeDriver\nCapabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 88.0.4324.96, chrome: {chromedriverVersion: 88.0.4324.96 (68dba2d8a0b14..., userDataDir: /var/folders/qj/r0xy6vn55td...}, goog:chromeOptions: {debuggerAddress: localhost:50410}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: MAC, platformName: MAC, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}\nSession ID: 5e65cb04c5485906b1b1285830fb2058\n*** Element info: {Using\u003dclass name, value\u003dempsearch_employee_name_empName}\n\tat sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)\n\tat sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)\n\tat sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)\n\tat java.lang.reflect.Constructor.newInstance(Constructor.java:423)\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)\n\tat org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)\n\tat org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)\n\tat org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElementByClassName(RemoteWebDriver.java:412)\n\tat org.openqa.selenium.By$ByClassName.findElement(By.java:389)\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)\n\tat org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)\n\tat org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)\n\tat com.sun.proxy.$Proxy17.sendKeys(Unknown Source)\n\tat com.hrms.stepdefinitions.EmployeeListStepDefinition.enter_in_Employee_Name_textbox(EmployeeListStepDefinition.java:42)\n\tat ✽.enter \"Daria Denchuk\" in Employee Name textbox(file:///Users/agameganon/eclipse-workspace/CucumberFramework/src/test/resources/features/searchEmployee.feature:27)\n",
-  "status": "failed"
-});
-formatter.step({
-  "name": "click on search button",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "com.hrms.stepdefinitions.EmployeeListStepDefinition.click_on_search_button()"
-});
-formatter.result({
-  "status": "skipped"
-});
-formatter.step({
-  "name": "verify that employees with \"Daria Denchuk\" is displayed",
-  "keyword": "Then "
-});
-formatter.match({
-  "location": "com.hrms.stepdefinitions.EmployeeListStepDefinition.verify_that_employees_with_is_displayed(java.lang.String)"
-});
-formatter.result({
-  "status": "skipped"
-});
-formatter.embedding("image/png", "embedded0.png", "");
-formatter.after({
   "status": "passed"
 });
 formatter.background({
@@ -171,411 +178,464 @@ formatter.background({
   "description": "",
   "keyword": "Background"
 });
-formatter.before({
-  "status": "passed"
-});
 formatter.step({
-  "name": "enter valid credentials",
+  "name": "a JWT is generated",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "com.hrms.stepdefinitions.LoginStepDefinition.enter_valid_credentials()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "click on login button",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "com.hrms.stepdefinitions.LoginStepDefinition.click_on_login_button()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "verify dashboard is displayed",
-  "keyword": "Then "
-});
-formatter.match({
-  "location": "com.hrms.stepdefinitions.LoginStepDefinition.verify_dashboard_is_displayed()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "click on PIM",
-  "keyword": "When "
-});
-formatter.match({
-  "location": "com.hrms.stepdefinitions.AddEmployeeStepDefinition.click_on_PIM()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "click on Employee List",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "com.hrms.stepdefinitions.EmployeeListStepDefinition.click_on_Employee_List()"
+  "location": "com.hrms.API.generateTokenSteps.a_JWT_is_generated()"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.scenario({
-  "name": "",
+  "name": "Update the created Employee",
   "description": "",
-  "keyword": "Scenario Outline",
+  "keyword": "Scenario",
   "tags": [
     {
-      "name": "@searchname"
+      "name": "@apiWorkflow"
     }
   ]
 });
 formatter.step({
-  "name": "enter \"Julia Garilova\" in Employee Name textbox",
+  "name": "a request is prepared to update the created employee",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "com.hrms.API.ApiTestingFinalSteps.a_request_is_prepared_to_update_the_created_employee()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "a PUT call is made to update the employee",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "com.hrms.API.ApiTestingFinalSteps.a_PUT_call_is_made_to_update_the_employee()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the status code is 201",
   "keyword": "Then "
 });
 formatter.match({
-  "location": "com.hrms.stepdefinitions.EmployeeListStepDefinition.enter_in_Employee_Name_textbox(java.lang.String)"
+  "location": "com.hrms.API.ApiTestingFinalSteps.the_status_code_is(int)"
 });
 formatter.result({
-  "error_message": "org.openqa.selenium.NoSuchElementException: Cannot locate an element using class name\u003dempsearch_employee_name_empName\nFor documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html\nBuild info: version: \u00273.141.59\u0027, revision: \u0027e82be7d358\u0027, time: \u00272018-11-14T08:17:03\u0027\nSystem info: host: \u0027Anastasiias-MBP.home\u0027, ip: \u0027fe80:0:0:0:450:709b:e34c:8f15%en0\u0027, os.name: \u0027Mac OS X\u0027, os.arch: \u0027x86_64\u0027, os.version: \u002710.16\u0027, java.version: \u00271.8.0_261\u0027\nDriver info: driver.version: RemoteWebDriver\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:327)\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElementByClassName(RemoteWebDriver.java:412)\n\tat org.openqa.selenium.By$ByClassName.findElement(By.java:389)\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)\n\tat org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)\n\tat org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)\n\tat com.sun.proxy.$Proxy17.sendKeys(Unknown Source)\n\tat com.hrms.stepdefinitions.EmployeeListStepDefinition.enter_in_Employee_Name_textbox(EmployeeListStepDefinition.java:42)\n\tat ✽.enter \"Julia Garilova\" in Employee Name textbox(file:///Users/agameganon/eclipse-workspace/CucumberFramework/src/test/resources/features/searchEmployee.feature:27)\n",
-  "status": "failed"
+  "status": "passed"
 });
 formatter.step({
-  "name": "click on search button",
+  "name": "the updated employee contains key \"Message\" and value \"Entry updated\"",
   "keyword": "And "
 });
 formatter.match({
-  "location": "com.hrms.stepdefinitions.EmployeeListStepDefinition.click_on_search_button()"
+  "location": "com.hrms.API.ApiTestingFinalSteps.the_updated_employee_contains_key_and_value(java.lang.String,java.lang.String)"
 });
 formatter.result({
-  "status": "skipped"
-});
-formatter.step({
-  "name": "verify that employees with \"Julia Garilova\" is displayed",
-  "keyword": "Then "
-});
-formatter.match({
-  "location": "com.hrms.stepdefinitions.EmployeeListStepDefinition.verify_that_employees_with_is_displayed(java.lang.String)"
-});
-formatter.result({
-  "status": "skipped"
-});
-formatter.after({
-  "error_message": "org.openqa.selenium.NoSuchWindowException: no such window: target window already closed\nfrom unknown error: web view not found\n  (Session info: chrome\u003d88.0.4324.96)\nBuild info: version: \u00273.141.59\u0027, revision: \u0027e82be7d358\u0027, time: \u00272018-11-14T08:17:03\u0027\nSystem info: host: \u0027Anastasiias-MBP.home\u0027, ip: \u0027fe80:0:0:0:450:709b:e34c:8f15%en0\u0027, os.name: \u0027Mac OS X\u0027, os.arch: \u0027x86_64\u0027, os.version: \u002710.16\u0027, java.version: \u00271.8.0_261\u0027\nDriver info: org.openqa.selenium.chrome.ChromeDriver\nCapabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 88.0.4324.96, chrome: {chromedriverVersion: 88.0.4324.96 (68dba2d8a0b14..., userDataDir: /var/folders/qj/r0xy6vn55td...}, goog:chromeOptions: {debuggerAddress: localhost:50497}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: MAC, platformName: MAC, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}\nSession ID: 5e223c91d20afd879c8ad178b7529d79\n\tat sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)\n\tat sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)\n\tat sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)\n\tat java.lang.reflect.Constructor.newInstance(Constructor.java:423)\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)\n\tat org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)\n\tat org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)\n\tat org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)\n\tat org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:609)\n\tat org.openqa.selenium.remote.RemoteWebDriver.getScreenshotAs(RemoteWebDriver.java:295)\n\tat com.hrms.utils.CommomMethods.takeScreenshot(CommomMethods.java:95)\n\tat com.hrms.stepdefinitions.Hooks.endTest(Hooks.java:20)\n",
-  "status": "failed"
+  "status": "passed"
 });
 formatter.background({
   "name": "",
   "description": "",
   "keyword": "Background"
 });
-formatter.before({
-  "status": "passed"
-});
 formatter.step({
-  "name": "enter valid credentials",
+  "name": "a JWT is generated",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "com.hrms.stepdefinitions.LoginStepDefinition.enter_valid_credentials()"
+  "location": "com.hrms.API.generateTokenSteps.a_JWT_is_generated()"
 });
 formatter.result({
   "status": "passed"
-});
-formatter.step({
-  "name": "click on login button",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "com.hrms.stepdefinitions.LoginStepDefinition.click_on_login_button()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "verify dashboard is displayed",
-  "keyword": "Then "
-});
-formatter.match({
-  "location": "com.hrms.stepdefinitions.LoginStepDefinition.verify_dashboard_is_displayed()"
-});
-formatter.result({
-  "error_message": "org.openqa.selenium.NoSuchWindowException: no such window: window was already closed\n  (Session info: chrome\u003d88.0.4324.96)\nBuild info: version: \u00273.141.59\u0027, revision: \u0027e82be7d358\u0027, time: \u00272018-11-14T08:17:03\u0027\nSystem info: host: \u0027Anastasiias-MBP.home\u0027, ip: \u0027fe80:0:0:0:450:709b:e34c:8f15%en0\u0027, os.name: \u0027Mac OS X\u0027, os.arch: \u0027x86_64\u0027, os.version: \u002710.16\u0027, java.version: \u00271.8.0_261\u0027\nDriver info: org.openqa.selenium.chrome.ChromeDriver\nCapabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 88.0.4324.96, chrome: {chromedriverVersion: 88.0.4324.96 (68dba2d8a0b14..., userDataDir: /var/folders/qj/r0xy6vn55td...}, goog:chromeOptions: {debuggerAddress: localhost:50554}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: MAC, platformName: MAC, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}\nSession ID: b648493152c5e0b2f90391f8d27862fc\n*** Element info: {Using\u003dcss selector, value\u003da#welcome}\n\tat sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)\n\tat sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)\n\tat sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)\n\tat java.lang.reflect.Constructor.newInstance(Constructor.java:423)\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)\n\tat org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)\n\tat org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)\n\tat org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElementByCssSelector(RemoteWebDriver.java:420)\n\tat org.openqa.selenium.By$ByCssSelector.findElement(By.java:431)\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)\n\tat org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)\n\tat org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)\n\tat com.sun.proxy.$Proxy17.isDisplayed(Unknown Source)\n\tat com.hrms.stepdefinitions.LoginStepDefinition.verify_dashboard_is_displayed(LoginStepDefinition.java:29)\n\tat ✽.verify dashboard is displayed(file:///Users/agameganon/eclipse-workspace/CucumberFramework/src/test/resources/features/searchEmployee.feature:6)\n",
-  "status": "failed"
-});
-formatter.step({
-  "name": "click on PIM",
-  "keyword": "When "
-});
-formatter.match({
-  "location": "com.hrms.stepdefinitions.AddEmployeeStepDefinition.click_on_PIM()"
-});
-formatter.result({
-  "status": "skipped"
-});
-formatter.step({
-  "name": "click on Employee List",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "com.hrms.stepdefinitions.EmployeeListStepDefinition.click_on_Employee_List()"
-});
-formatter.result({
-  "status": "skipped"
 });
 formatter.scenario({
-  "name": "",
+  "name": "Retrieving the updated employee",
   "description": "",
-  "keyword": "Scenario Outline",
+  "keyword": "Scenario",
   "tags": [
     {
-      "name": "@searchname"
+      "name": "@apiWorkflow"
     }
   ]
 });
 formatter.step({
-  "name": "enter \"Valentina Black\" in Employee Name textbox",
+  "name": "a request is prepared to retrieve the updated employee",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "com.hrms.API.ApiTestingFinalSteps.a_request_is_prepared_to_retrieve_the_updated_employee()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "a GET call is made to retrieve the updated Employee",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "com.hrms.API.ApiTestingFinalSteps.a_GET_call_is_made_to_retrieve_the_updated_Employee()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the status code for retrieving the updated employee is 200",
   "keyword": "Then "
 });
 formatter.match({
-  "location": "com.hrms.stepdefinitions.EmployeeListStepDefinition.enter_in_Employee_Name_textbox(java.lang.String)"
+  "location": "com.hrms.API.ApiTestingFinalSteps.the_status_code_for_retrieving_the_updated_employee_is(int)"
 });
 formatter.result({
-  "status": "skipped"
+  "status": "passed"
 });
 formatter.step({
-  "name": "click on search button",
+  "name": "the retrieved Employee_Middle_Name \"employee[0].emp_middle_name\" matches the updated_middle_name",
   "keyword": "And "
 });
 formatter.match({
-  "location": "com.hrms.stepdefinitions.EmployeeListStepDefinition.click_on_search_button()"
+  "location": "com.hrms.API.ApiTestingFinalSteps.the_retrieved_Employee_Middle_Name_matches_the_updated_middle_name(java.lang.String)"
 });
 formatter.result({
-  "status": "skipped"
-});
-formatter.step({
-  "name": "verify that employees with \"Valentina Black\" is displayed",
-  "keyword": "Then "
-});
-formatter.match({
-  "location": "com.hrms.stepdefinitions.EmployeeListStepDefinition.verify_that_employees_with_is_displayed(java.lang.String)"
-});
-formatter.result({
-  "status": "skipped"
-});
-formatter.after({
-  "error_message": "org.openqa.selenium.NoSuchWindowException: no such window: window was already closed\n  (Session info: chrome\u003d88.0.4324.96)\nBuild info: version: \u00273.141.59\u0027, revision: \u0027e82be7d358\u0027, time: \u00272018-11-14T08:17:03\u0027\nSystem info: host: \u0027Anastasiias-MBP.home\u0027, ip: \u0027fe80:0:0:0:450:709b:e34c:8f15%en0\u0027, os.name: \u0027Mac OS X\u0027, os.arch: \u0027x86_64\u0027, os.version: \u002710.16\u0027, java.version: \u00271.8.0_261\u0027\nDriver info: org.openqa.selenium.chrome.ChromeDriver\nCapabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 88.0.4324.96, chrome: {chromedriverVersion: 88.0.4324.96 (68dba2d8a0b14..., userDataDir: /var/folders/qj/r0xy6vn55td...}, goog:chromeOptions: {debuggerAddress: localhost:50554}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: MAC, platformName: MAC, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}\nSession ID: b648493152c5e0b2f90391f8d27862fc\n\tat sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)\n\tat sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)\n\tat sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)\n\tat java.lang.reflect.Constructor.newInstance(Constructor.java:423)\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)\n\tat org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)\n\tat org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)\n\tat org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)\n\tat org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:609)\n\tat org.openqa.selenium.remote.RemoteWebDriver.getScreenshotAs(RemoteWebDriver.java:295)\n\tat com.hrms.utils.CommomMethods.takeScreenshot(CommomMethods.java:95)\n\tat com.hrms.stepdefinitions.Hooks.endTest(Hooks.java:20)\n",
-  "status": "failed"
+  "status": "passed"
 });
 formatter.background({
   "name": "",
   "description": "",
   "keyword": "Background"
 });
-formatter.before({
-  "status": "passed"
-});
 formatter.step({
-  "name": "enter valid credentials",
+  "name": "a JWT is generated",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "com.hrms.stepdefinitions.LoginStepDefinition.enter_valid_credentials()"
+  "location": "com.hrms.API.generateTokenSteps.a_JWT_is_generated()"
 });
 formatter.result({
   "status": "passed"
-});
-formatter.step({
-  "name": "click on login button",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "com.hrms.stepdefinitions.LoginStepDefinition.click_on_login_button()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "verify dashboard is displayed",
-  "keyword": "Then "
-});
-formatter.match({
-  "location": "com.hrms.stepdefinitions.LoginStepDefinition.verify_dashboard_is_displayed()"
-});
-formatter.result({
-  "error_message": "org.openqa.selenium.NoSuchWindowException: no such window: window was already closed\n  (Session info: chrome\u003d88.0.4324.96)\nBuild info: version: \u00273.141.59\u0027, revision: \u0027e82be7d358\u0027, time: \u00272018-11-14T08:17:03\u0027\nSystem info: host: \u0027Anastasiias-MBP.home\u0027, ip: \u0027fe80:0:0:0:450:709b:e34c:8f15%en0\u0027, os.name: \u0027Mac OS X\u0027, os.arch: \u0027x86_64\u0027, os.version: \u002710.16\u0027, java.version: \u00271.8.0_261\u0027\nDriver info: org.openqa.selenium.chrome.ChromeDriver\nCapabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 88.0.4324.96, chrome: {chromedriverVersion: 88.0.4324.96 (68dba2d8a0b14..., userDataDir: /var/folders/qj/r0xy6vn55td...}, goog:chromeOptions: {debuggerAddress: localhost:50582}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: MAC, platformName: MAC, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}\nSession ID: 74cafd05373b24ff69e216a6e9bab7bf\n*** Element info: {Using\u003dcss selector, value\u003da#welcome}\n\tat sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)\n\tat sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)\n\tat sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)\n\tat java.lang.reflect.Constructor.newInstance(Constructor.java:423)\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)\n\tat org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)\n\tat org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)\n\tat org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElementByCssSelector(RemoteWebDriver.java:420)\n\tat org.openqa.selenium.By$ByCssSelector.findElement(By.java:431)\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)\n\tat org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)\n\tat org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)\n\tat com.sun.proxy.$Proxy17.isDisplayed(Unknown Source)\n\tat com.hrms.stepdefinitions.LoginStepDefinition.verify_dashboard_is_displayed(LoginStepDefinition.java:29)\n\tat ✽.verify dashboard is displayed(file:///Users/agameganon/eclipse-workspace/CucumberFramework/src/test/resources/features/searchEmployee.feature:6)\n",
-  "status": "failed"
-});
-formatter.step({
-  "name": "click on PIM",
-  "keyword": "When "
-});
-formatter.match({
-  "location": "com.hrms.stepdefinitions.AddEmployeeStepDefinition.click_on_PIM()"
-});
-formatter.result({
-  "status": "skipped"
-});
-formatter.step({
-  "name": "click on Employee List",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "com.hrms.stepdefinitions.EmployeeListStepDefinition.click_on_Employee_List()"
-});
-formatter.result({
-  "status": "skipped"
 });
 formatter.scenario({
-  "name": "",
+  "name": "Partially updating the employee",
   "description": "",
-  "keyword": "Scenario Outline",
+  "keyword": "Scenario",
   "tags": [
     {
-      "name": "@searchname"
+      "name": "@apiWorkflow"
     }
   ]
 });
 formatter.step({
-  "name": "enter \"Chandler Muriel Bing\" in Employee Name textbox",
+  "name": "a request is prepared to partially update the employee",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "com.hrms.API.ApiTestingFinalSteps.a_request_is_prepared_to_partially_update_the_employee()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "a PATCH call is made to partially update the employee",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "com.hrms.API.ApiTestingFinalSteps.a_PATCH_call_is_made_to_partially_update_the_employee()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the status code is 201",
   "keyword": "Then "
 });
 formatter.match({
-  "location": "com.hrms.stepdefinitions.EmployeeListStepDefinition.enter_in_Employee_Name_textbox(java.lang.String)"
+  "location": "com.hrms.API.ApiTestingFinalSteps.the_status_code_is(int)"
 });
 formatter.result({
-  "status": "skipped"
+  "status": "passed"
 });
 formatter.step({
-  "name": "click on search button",
+  "name": "the partially updated employee contains key \"Message\" and value \"Entry updated\"",
   "keyword": "And "
 });
 formatter.match({
-  "location": "com.hrms.stepdefinitions.EmployeeListStepDefinition.click_on_search_button()"
+  "location": "com.hrms.API.ApiTestingFinalSteps.the_partially_updated_employee_contains_key_and_value(java.lang.String,java.lang.String)"
 });
 formatter.result({
-  "status": "skipped"
+  "status": "passed"
 });
 formatter.step({
-  "name": "verify that employees with \"Chandler Muriel Bing\" is displayed",
-  "keyword": "Then "
+  "name": "the partially updated employee \"employee[0].emp_firstname\" matches the updated_firstname",
+  "keyword": "And "
 });
 formatter.match({
-  "location": "com.hrms.stepdefinitions.EmployeeListStepDefinition.verify_that_employees_with_is_displayed(java.lang.String)"
+  "location": "com.hrms.API.ApiTestingFinalSteps.the_partially_updated_employee_matches_the_updated_firstname(java.lang.String)"
 });
 formatter.result({
-  "status": "skipped"
-});
-formatter.after({
-  "error_message": "org.openqa.selenium.NoSuchWindowException: no such window: window was already closed\n  (Session info: chrome\u003d88.0.4324.96)\nBuild info: version: \u00273.141.59\u0027, revision: \u0027e82be7d358\u0027, time: \u00272018-11-14T08:17:03\u0027\nSystem info: host: \u0027Anastasiias-MBP.home\u0027, ip: \u0027fe80:0:0:0:450:709b:e34c:8f15%en0\u0027, os.name: \u0027Mac OS X\u0027, os.arch: \u0027x86_64\u0027, os.version: \u002710.16\u0027, java.version: \u00271.8.0_261\u0027\nDriver info: org.openqa.selenium.chrome.ChromeDriver\nCapabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 88.0.4324.96, chrome: {chromedriverVersion: 88.0.4324.96 (68dba2d8a0b14..., userDataDir: /var/folders/qj/r0xy6vn55td...}, goog:chromeOptions: {debuggerAddress: localhost:50582}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: MAC, platformName: MAC, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}\nSession ID: 74cafd05373b24ff69e216a6e9bab7bf\n\tat sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)\n\tat sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)\n\tat sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)\n\tat java.lang.reflect.Constructor.newInstance(Constructor.java:423)\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)\n\tat org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)\n\tat org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)\n\tat org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)\n\tat org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:609)\n\tat org.openqa.selenium.remote.RemoteWebDriver.getScreenshotAs(RemoteWebDriver.java:295)\n\tat com.hrms.utils.CommomMethods.takeScreenshot(CommomMethods.java:95)\n\tat com.hrms.stepdefinitions.Hooks.endTest(Hooks.java:20)\n",
-  "status": "failed"
+  "status": "passed"
 });
 formatter.background({
   "name": "",
   "description": "",
   "keyword": "Background"
 });
-formatter.before({
-  "status": "passed"
-});
 formatter.step({
-  "name": "enter valid credentials",
+  "name": "a JWT is generated",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "com.hrms.stepdefinitions.LoginStepDefinition.enter_valid_credentials()"
+  "location": "com.hrms.API.generateTokenSteps.a_JWT_is_generated()"
 });
 formatter.result({
   "status": "passed"
-});
-formatter.step({
-  "name": "click on login button",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "com.hrms.stepdefinitions.LoginStepDefinition.click_on_login_button()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "verify dashboard is displayed",
-  "keyword": "Then "
-});
-formatter.match({
-  "location": "com.hrms.stepdefinitions.LoginStepDefinition.verify_dashboard_is_displayed()"
-});
-formatter.result({
-  "error_message": "org.openqa.selenium.NoSuchWindowException: no such window: window was already closed\n  (Session info: chrome\u003d88.0.4324.96)\nBuild info: version: \u00273.141.59\u0027, revision: \u0027e82be7d358\u0027, time: \u00272018-11-14T08:17:03\u0027\nSystem info: host: \u0027Anastasiias-MBP.home\u0027, ip: \u0027fe80:0:0:0:450:709b:e34c:8f15%en0\u0027, os.name: \u0027Mac OS X\u0027, os.arch: \u0027x86_64\u0027, os.version: \u002710.16\u0027, java.version: \u00271.8.0_261\u0027\nDriver info: org.openqa.selenium.chrome.ChromeDriver\nCapabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 88.0.4324.96, chrome: {chromedriverVersion: 88.0.4324.96 (68dba2d8a0b14..., userDataDir: /var/folders/qj/r0xy6vn55td...}, goog:chromeOptions: {debuggerAddress: localhost:50617}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: MAC, platformName: MAC, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}\nSession ID: 3a56f24dee914a05902b3e21ed135d89\n*** Element info: {Using\u003dcss selector, value\u003da#welcome}\n\tat sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)\n\tat sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)\n\tat sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)\n\tat java.lang.reflect.Constructor.newInstance(Constructor.java:423)\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)\n\tat org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)\n\tat org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)\n\tat org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElementByCssSelector(RemoteWebDriver.java:420)\n\tat org.openqa.selenium.By$ByCssSelector.findElement(By.java:431)\n\tat org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)\n\tat org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)\n\tat org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)\n\tat com.sun.proxy.$Proxy17.isDisplayed(Unknown Source)\n\tat com.hrms.stepdefinitions.LoginStepDefinition.verify_dashboard_is_displayed(LoginStepDefinition.java:29)\n\tat ✽.verify dashboard is displayed(file:///Users/agameganon/eclipse-workspace/CucumberFramework/src/test/resources/features/searchEmployee.feature:6)\n",
-  "status": "failed"
-});
-formatter.step({
-  "name": "click on PIM",
-  "keyword": "When "
-});
-formatter.match({
-  "location": "com.hrms.stepdefinitions.AddEmployeeStepDefinition.click_on_PIM()"
-});
-formatter.result({
-  "status": "skipped"
-});
-formatter.step({
-  "name": "click on Employee List",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "com.hrms.stepdefinitions.EmployeeListStepDefinition.click_on_Employee_List()"
-});
-formatter.result({
-  "status": "skipped"
 });
 formatter.scenario({
-  "name": "",
+  "name": "Delete the created employee",
   "description": "",
-  "keyword": "Scenario Outline",
+  "keyword": "Scenario",
   "tags": [
     {
-      "name": "@searchname"
+      "name": "@apiWorkflow"
     }
   ]
 });
 formatter.step({
-  "name": "enter \"Jaco Alval\" in Employee Name textbox",
+  "name": "a request is prepared to delete the employee",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "com.hrms.API.ApiTestingFinalSteps.a_request_is_prepared_to_delete_the_employee()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "a DELETE call is made",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "com.hrms.API.ApiTestingFinalSteps.a_DELETE_call_is_made()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the status code is 201",
   "keyword": "Then "
 });
 formatter.match({
-  "location": "com.hrms.stepdefinitions.EmployeeListStepDefinition.enter_in_Employee_Name_textbox(java.lang.String)"
+  "location": "com.hrms.API.ApiTestingFinalSteps.the_status_code_is(int)"
 });
 formatter.result({
-  "status": "skipped"
+  "status": "passed"
 });
 formatter.step({
-  "name": "click on search button",
+  "name": "the employee is successfully deleted with the \"message\" in response \"Entry deleted\"",
   "keyword": "And "
 });
 formatter.match({
-  "location": "com.hrms.stepdefinitions.EmployeeListStepDefinition.click_on_search_button()"
+  "location": "com.hrms.API.ApiTestingFinalSteps.the_employee_is_successfully_deleted_with_the_in_response(java.lang.String,java.lang.String)"
 });
 formatter.result({
-  "status": "skipped"
+  "status": "passed"
 });
 formatter.step({
-  "name": "verify that employees with \"Jaco Alval\" is displayed",
+  "name": "the employee ID \"employee[0].employee_id\" is the same as the one stored in global",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "com.hrms.API.ApiTestingFinalSteps.the_employee_ID_is_the_same_as_the_one_stored_in_global(java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.background({
+  "name": "",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "a JWT is generated",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "com.hrms.API.generateTokenSteps.a_JWT_is_generated()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Get all Employees",
+  "description": "",
+  "keyword": "Scenario",
+  "tags": [
+    {
+      "name": "@apiWorkflow"
+    }
+  ]
+});
+formatter.step({
+  "name": "a request is prepared to get all employees",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "com.hrms.API.ApiTestingFinalSteps.a_request_is_prepared_to_get_all_employees()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "a GET call is made to retrive all employees",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "com.hrms.API.ApiTestingFinalSteps.a_GET_call_is_made_to_retrive_all_employees()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the status code is 200",
   "keyword": "Then "
 });
 formatter.match({
-  "location": "com.hrms.stepdefinitions.EmployeeListStepDefinition.verify_that_employees_with_is_displayed(java.lang.String)"
+  "location": "com.hrms.API.ApiTestingFinalSteps.the_status_code_is(int)"
 });
 formatter.result({
-  "status": "skipped"
+  "status": "passed"
 });
-formatter.after({
-  "error_message": "org.openqa.selenium.NoSuchWindowException: no such window: window was already closed\n  (Session info: chrome\u003d88.0.4324.96)\nBuild info: version: \u00273.141.59\u0027, revision: \u0027e82be7d358\u0027, time: \u00272018-11-14T08:17:03\u0027\nSystem info: host: \u0027Anastasiias-MBP.home\u0027, ip: \u0027fe80:0:0:0:450:709b:e34c:8f15%en0\u0027, os.name: \u0027Mac OS X\u0027, os.arch: \u0027x86_64\u0027, os.version: \u002710.16\u0027, java.version: \u00271.8.0_261\u0027\nDriver info: org.openqa.selenium.chrome.ChromeDriver\nCapabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 88.0.4324.96, chrome: {chromedriverVersion: 88.0.4324.96 (68dba2d8a0b14..., userDataDir: /var/folders/qj/r0xy6vn55td...}, goog:chromeOptions: {debuggerAddress: localhost:50617}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: MAC, platformName: MAC, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}\nSession ID: 3a56f24dee914a05902b3e21ed135d89\n\tat sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)\n\tat sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)\n\tat sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)\n\tat java.lang.reflect.Constructor.newInstance(Constructor.java:423)\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)\n\tat org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)\n\tat org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)\n\tat org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)\n\tat org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)\n\tat org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:609)\n\tat org.openqa.selenium.remote.RemoteWebDriver.getScreenshotAs(RemoteWebDriver.java:295)\n\tat com.hrms.utils.CommomMethods.takeScreenshot(CommomMethods.java:95)\n\tat com.hrms.stepdefinitions.Hooks.endTest(Hooks.java:20)\n",
-  "status": "failed"
+formatter.step({
+  "name": "it contains key1 \"Total Employees\" and key2 \"Employees\"",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "com.hrms.API.ApiTestingFinalSteps.it_contains_key1_and_key2(java.lang.String,java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.background({
+  "name": "",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "a JWT is generated",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "com.hrms.API.generateTokenSteps.a_JWT_is_generated()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "get all Employees status",
+  "description": "",
+  "keyword": "Scenario",
+  "tags": [
+    {
+      "name": "@apiWorkflow"
+    }
+  ]
+});
+formatter.step({
+  "name": "a request is prepared to get all employees status",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "com.hrms.API.ApiTestingFinalSteps.a_request_is_prepared_to_get_all_employees_status()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "a GET call is made to retrieve all employees status",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "com.hrms.API.ApiTestingFinalSteps.a_GET_call_is_made_to_retrieve_all_employees_status()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "it contains the value1 \"Employee\" value2 \"Worker\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "com.hrms.API.ApiTestingFinalSteps.it_contains_the_value1_value2(java.lang.String,java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.background({
+  "name": "",
+  "description": "",
+  "keyword": "Background"
+});
+formatter.step({
+  "name": "a JWT is generated",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "com.hrms.API.generateTokenSteps.a_JWT_is_generated()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Get Job Titles",
+  "description": "",
+  "keyword": "Scenario",
+  "tags": [
+    {
+      "name": "@apiWorkflow"
+    }
+  ]
+});
+formatter.step({
+  "name": "a request is prepared to get job titles",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "com.hrms.API.ApiTestingFinalSteps.a_request_is_prepared_to_get_job_titles()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "a GET call is made to retrive all job titles",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "com.hrms.API.ApiTestingFinalSteps.a_GET_call_is_made_to_retrive_all_job_titles()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the status code is 200",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "com.hrms.API.ApiTestingFinalSteps.the_status_code_is(int)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "response contains value1 \"Cloud Architect\" and value2 \"Cloud Consultant\"",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "com.hrms.API.ApiTestingFinalSteps.response_contains_value1_and_value2(java.lang.String,java.lang.String)"
+});
+formatter.result({
+  "status": "passed"
 });
 });

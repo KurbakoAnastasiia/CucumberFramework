@@ -24,6 +24,21 @@ public class DashboardPage extends CommomMethods {
     @FindBy (xpath = "//div[@class ='menu']/ul/li")
     public List<WebElement> dashTabs;
 
+    @FindBy(id = "menu_admin_viewAdminModule")
+    public WebElement adminBtn;
+
+    @FindBy(id = "menu_admin_Job")
+    public WebElement jobBtn;
+
+    @FindBy(id = "menu_admin_viewJobTitleList")
+    public WebElement jobTitleBtn;
+
+
+    public void clickOnJobTitles(WebElement element) {
+        moveToElementAction(jobBtn);
+        jsClick(element);
+    }
+
     public List<String> getDashTabs() {
         List<String> dashTabsText = new ArrayList<>();
         for (WebElement dashtab : dashTabs) {
@@ -31,11 +46,6 @@ public class DashboardPage extends CommomMethods {
         }
         return dashTabsText;
     }
-
-    public DashboardPage() {
-        PageFactory.initElements(driver, this);
-    }
-
     public void clickPIM() {
         jsClick(PIMBtn);
     }
@@ -47,4 +57,14 @@ public class DashboardPage extends CommomMethods {
     public void clickOnAddEmployeeBtn() {
         jsClick(addEmployeeBtn);
     }
+
+    public void clickOnAdminBtn(){
+        jsClick(adminBtn);
+    }
+
+    public DashboardPage() {
+        PageFactory.initElements(driver, this);
+    }
+
+
 }

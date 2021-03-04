@@ -3,8 +3,7 @@ Feature: Search Employee Functionality
   Background:
     Given enter valid credentials
     And click on login button
-    Then verify dashboard is displayed
-    When click on PIM
+    And click on PIM
     And click on Employee List
 
     @search
@@ -38,4 +37,8 @@ Feature: Search Employee Functionality
 
 
 
-
+    @regression
+    Scenario: Search Employee job titles
+      When search for job titles
+      Then collect Job Titles data from hrms database
+      And verify that Job Titles data is matched

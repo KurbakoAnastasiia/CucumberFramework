@@ -53,3 +53,12 @@ Feature: Add Employee Functionality
           @excel
       Scenario: Adding multiple employees from excel
         When add multiple employees "AddEmployee" from excel sheet and verify they are added
+
+
+        @db @regression
+      Scenario: Adding employee and database validation
+          And enter first name "John", middle name "John" and last name "Doe"
+          And capture employeeID
+          And click on save button
+          Then collect employee data from hrms database
+          And verify data from db and ui is matched

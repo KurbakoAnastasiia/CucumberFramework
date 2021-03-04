@@ -49,4 +49,11 @@ public class EmployeeListStepDefinition extends CommomMethods {
         Assert.assertEquals("Verify employee is displayed", expectedID, actualID);
     }
 
+    @When("search for job titles")
+    public void search_for_job_titles() {
+        storeAllDDValuesIntoList(employeeListPage.jobTitleDD);
+    }
+
+
+
 }

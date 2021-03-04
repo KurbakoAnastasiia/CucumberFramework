@@ -3,7 +3,10 @@ package com.hrms.stepdefinitions;
 import com.hrms.utils.CommomMethods;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
@@ -18,5 +21,10 @@ public class DashboardStepDefinition extends CommomMethods {
         System.out.println(actualDashTabs);
         Assert.assertEquals("Verify dashboard tabs", expectedDashTabs, actualDashTabs);
 
+    }
+
+    @When("click on Admin button")
+    public void click_on_Admin_button() {
+        dashboardPage.clickOnAdminBtn();
     }
 }

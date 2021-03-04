@@ -25,6 +25,8 @@ public class EmployeeListPage extends CommomMethods {
     @FindBy (xpath = "//table[@id = 'resultTable']/tbody/tr[1]/td[4]")
     public WebElement cellLastName;
 
+    @FindBy(id = "empsearch_job_title")
+    public WebElement jobTitleDD;
 
     public void enterEmployeeID(String employeeID) {
         sendText(idEmployeeBox, employeeID);

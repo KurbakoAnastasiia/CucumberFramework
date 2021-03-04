@@ -3,13 +3,18 @@ package com.hrms.stepdefinitions;
 import com.hrms.utils.CommomMethods;
 import com.hrms.utils.Constants;
 import com.hrms.utils.ExcelReading;
+import com.hrms.utils.GlobalVariables;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class AddEmployeeStepDefinition extends CommomMethods {
 
@@ -58,6 +63,7 @@ public class AddEmployeeStepDefinition extends CommomMethods {
     @Then("enter first name {string}, middle name {string} and last name {string}")
     public void enter_first_name_middle_name_and_last_name(String firstname, String middlename, String lastname) {
         addEmployeePage.enterFirstMiddleLastName(firstname, middlename, lastname);
+        GlobalVariables.employeeData = firstname + middlename + lastname;
     }
 
     @Then("verify that {string} is added successfully")
@@ -120,5 +126,24 @@ public class AddEmployeeStepDefinition extends CommomMethods {
         }
     }
 
+    @When("capture employeeID")
+    public void capture_employeeID() {
+        GlobalVariables.emp_ID = addEmployeePage.employeeID.getAttribute("value");
+    }
 
-}
+    @Then("verify data from db and ui is matched")
+    public void verify_data_from_db_and_ui_is_matched() {
+        String actualEmpDataDB = "";
+        for (Map<String,String> mapEmp : GlobalVariables.dbList) {
+            Set<Map.Entry<String, String>> entries = mapEmp.entrySet();
+            for (Map.Entry<String,String> entry:entries) { 
+                String dbColumnValue = entry.getValue();
+                actualEmpDataDB += dbColumnValue;
+            }
+        }
+        GlobalVariables.employeeData.trim();
+        actualEmpDataDB.trim();
+        Assert.assertEquals("Data is not matching", GlobalVariables.employeeData, actualEmpDataDB);
+        }
+    }
+
