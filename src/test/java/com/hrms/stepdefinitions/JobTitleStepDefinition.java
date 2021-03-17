@@ -46,8 +46,7 @@ public class JobTitleStepDefinition extends CommomMethods {
 
     @Then("verify that Job Titles data is matched")
     public void verify_that_Job_Titles_data_is_matched() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
     }
 }
 

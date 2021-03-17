@@ -28,7 +28,7 @@ Feature: Add Employee Functionality
         And click on save button
         Then verify that "Marta Mary Ostash" is added successfully
 
-      @examples
+      @c
      Scenario Outline: Adding multilple employees without login details
        When enter "<FirstName>", "<MiddleName>" and "<LastName>"
        And click on save button
